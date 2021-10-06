@@ -1,0 +1,23 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: netpol-allow-developer-pod1
+  namespace: infrastructure
+spec:
+  podSelector:
+    matchLabels:
+      app: mysql
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          purpose: developer
+      podSelector:
+        matchLabels:
+          app: pod1
+    ports:
+    - protocol: TCP
+      port: 3306

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pod2
+  name: pod2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pod2
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: pod2
+    spec:
+      containers:
+      - image: woahbase/alpine-mysql
+        name: alpine

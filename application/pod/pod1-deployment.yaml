@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pod1
+  name: pod1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pod1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: pod1
+    spec:
+      containers:
+      - image: woahbase/alpine-mysql
+#        command:
+#          - /bin/sh
+#          - "-c"
+#          - "sleep 60m"
+#        imagePullPolicy: IfNotPresent
+        name: alpine
